@@ -1,10 +1,14 @@
-function [data] = dba(address,dir,bit,data)
+function [data] = dba(address,dir,data)
 %DBA Read/Write Direct Byte Addressing, 0x00-0xFF. Use for Lower RAM and SFR
 %   Returns the value of the byte or bit being addressed. Returns a 0 if
 %   the write was successful. Returns empty on invalid input. Direction must be
 %   'r' or 'w'. Indexed at 0.
 
 global lowerintram sfr
+
+if ~exist('dir','var')
+    dir = 'r';
+end
 
 if (dir ~= 'r') && (dir ~= 'w')
     data = [];
@@ -23,11 +27,17 @@ if dir == 'r'
         address = address + 1 - 0x80;
         data = sfr(address);
     end
-    if exist('bit','var')
-        bit = bit+1;
-        data = data(bit);
-    return
+end
+
+if dir == 'w'
+    if address < 0x7F
+        address = address + 1;
+        lowerintram(address) = data;
+    else
+        address = address + 1 - 0x80;
+        sfr(address) = data;
     end
+    data = 0;
 end
 
 end
