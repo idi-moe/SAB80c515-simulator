@@ -40,4 +40,3 @@ if dir == 'w'
 end
 
 end
-

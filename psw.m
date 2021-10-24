@@ -8,7 +8,7 @@ function [data] = psw(flag,dir,value)
 %   See page 25 of the Siemens SAB80C515 user manual. The layout is
 %   cy,ac,f0,rs1,rs0,ov,f1,p from 0xD7 to 0xD0.
 
-psw = dba(0xD0);
+psw = dba(0xD0); %address of the psw in dba mode
 bit = [];
 
 if ~exist('dir','var')

@@ -7,6 +7,10 @@ function [byte] = registerN(n,dir,data)
 if ~exist('dir','var')
     dir = 'r';
 end
+if ~exist('data','var')
+    data = [];
+end
+
 
 rs0 = psw('rs0');
 rs1 = psw('rs1');
@@ -16,6 +20,7 @@ address = (2*rs1+rs0)*8+n;
 %   multiply by 8 to get the address of the
 %   start of the bank, and then add n, the
 %   target register to get the address required
+
 
 byte = dba(address,dir,data);
 
