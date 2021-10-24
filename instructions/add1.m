@@ -18,9 +18,9 @@ end
 
 switch opcode
     case 0x26
-        val = dba(register(0)); %remember, this is indirectly addressing ram
+        val = dba(registerN(0)); %remember, this is indirectly addressing ram
     case 0x27
-        val = dba(register(1));
+        val = dba(registerN(1));
 end
 
 accbits = logical(bitand(acc,[1,2,4,8,16,32,64,128])); %for the flags
