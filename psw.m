@@ -1,4 +1,4 @@
-function [data] = psw(dir,flag,value)
+function [data] = psw(flag,dir,value)
 %PSW R/W access to the program status word register (PSW)
 %   Located at 0xD0, this register holds the 'cy' carry flag, 'ac' aux
 %   carry flag (for bcd), 'f0' general purpose user flag 0, 'rs1' & 'rs0'
@@ -10,6 +10,10 @@ function [data] = psw(dir,flag,value)
 
 psw = dba(0xD0);
 bit = [];
+
+if ~exist('dir','var')
+    dir = 'r';
+end
 
 switch flag %remember that the lower level r/w functions index at 0!
     case 'cy'
