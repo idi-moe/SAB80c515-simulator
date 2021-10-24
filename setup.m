@@ -4,12 +4,12 @@ addpath('instructions')
 %allocate memory
 global EAp internal external lowerintram upperintram sfr extdatamem
 EAp = false; %external rom flag, 80c535=0
-internal = zeros(0x2000,1,'uint8');
-external = zeros(0x10000,1,'uint8');
-lowerintram = zeros(0x80,1,'uint8');
-upperintram = zeros(0x80,1,'uint8');
-sfr = zeros(0x80,1,'int8');
-extdatamem = zeros(0x10000,1,'int8');
+internal = zeros(0x2000,1,'uint16');
+external = zeros(0x10000,1,'uint16');
+lowerintram = zeros(0x80,1,'uint16');
+upperintram = zeros(0x80,1,'uint16');
+sfr = zeros(0x80,1,'int16');
+extdatamem = zeros(0x10000,1,'int16');
 
 %init sfr
 dba(0x80,'w',0xFF); %P0, port 0
