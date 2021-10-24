@@ -23,7 +23,7 @@ if dir == 'r'
         address = address + 1;
         data = lowerintram(address);
     else
-        address = address + 1 - 0x80;
+        address = address + 1 - 0x80; %offset things, due to having sfr as a different variable
         data = sfr(address);
     end
 end
