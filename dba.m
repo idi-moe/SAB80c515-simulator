@@ -11,11 +11,11 @@ end
 
 if (dir ~= 'r') && (dir ~= 'w')
     data = [];
-    return;
+    return
 end
 if (address > 0xFF) && (address < 0x00)
     data = [];
-    return;
+    return
 end
 
 if dir == 'r'

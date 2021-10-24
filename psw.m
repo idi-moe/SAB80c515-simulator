@@ -41,8 +41,8 @@ end
 
 if dir == 'w'
     psw = writebit(psw,bit,value);
-    dba(0xD0,'w',psw)
-    data = 0;
+    dba(0xD0,'w',psw);
+    data = [];
 end
     
 end
