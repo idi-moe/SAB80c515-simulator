@@ -1,3 +1,6 @@
+%include subfolders
+addpath('instructions')
+
 %allocate memory
 global EAp internal external lowerintram upperintram sfr extdatamem
 EAp = false; %external rom flag, 80c535=0
