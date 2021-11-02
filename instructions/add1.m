@@ -26,19 +26,7 @@ end
 accbits = logical(bitand(acc,uint8([1,2,4,8,16,32,64,128]))); %for the flags
 valbits = logical(bitand(val,uint8([1,2,4,8,16,32,64,128])));
 
-%{
-if acc+val > 0xFF
-    corr = 128;
-else
-    corr = 0;
-end
-
-acc = acc + val - corr; %why corr you ask? overflow reasons
-%}
-
-%fine, butwise code
-
-
+acc = mod(acc+val,256);
 
 if (accbits(7) == 1) && (valbits(7) == 1)
     psw('cy','w',true);
