@@ -10,7 +10,7 @@ lowerintram = zeros(0x80,1);
 upperintram = zeros(0x80,1);
 sfr = zeros(0x80,1);
 extdatamem = zeros(0x10000,1);
-pc = zeros(0x2,1);
+pc = int16(zeros(1,1));
 
 %init sfr
 dba(0x80,'w',0xFF); %P0, port 0

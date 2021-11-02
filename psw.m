@@ -32,6 +32,8 @@ switch flag %remember that the lower level r/w functions index at 0!
         bit = 1;
     case 'p'
         bit = 0;
+    otherwise
+        error('psw read with invalid flag name')
 end
         
 
