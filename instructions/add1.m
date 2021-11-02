@@ -46,7 +46,7 @@ end
 
 dba(0xE0,'w',acc);
 
-
+incrementpc();
 
 end
 
