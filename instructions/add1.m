@@ -5,7 +5,7 @@ function [] = add1(opcode)
 %   not 6. The flags are overwritten from this instruction, with 0s if
 %   needed. No state is preserved from the previos ops.
 
-acc = dba(0xE0);
+acc = uint8(dba(0xE0));
 
 if (opcode < 0x26) || (opcode > 0x2F)
     error('wrong opcode in add function')
@@ -13,7 +13,7 @@ end
 
 if opcode > 0x27
     reg = opcode - 0x28; %get Rn from opcode, who wants to do 8 switch/case
-    val = registerN(reg);
+    val = uint8(registerN(reg));
 end
 
 switch opcode
@@ -23,9 +23,10 @@ switch opcode
         val = dba(registerN(1));
 end
 
-accbits = logical(bitand(acc,[1,2,4,8,16,32,64,128])); %for the flags
-valbits = logical(bitand(val,[1,2,4,8,16,32,64,128]));
+accbits = logical(bitand(acc,uint8([1,2,4,8,16,32,64,128]))); %for the flags
+valbits = logical(bitand(val,uint8([1,2,4,8,16,32,64,128])));
 
+%{
 if acc+val > 0xFF
     corr = 128;
 else
@@ -33,6 +34,11 @@ else
 end
 
 acc = acc + val - corr; %why corr you ask? overflow reasons
+%}
+
+%fine, butwise code
+
+
 
 if (accbits(7) == 1) && (valbits(7) == 1)
     psw('cy','w',true);
