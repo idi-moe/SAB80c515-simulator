@@ -3,6 +3,6 @@ function [] = incrementpc()
 %   The PC is not addressable, and evry instruction increments it. Some
 %   modify it as well, and some read it.
 global pc
-pc = pc + 1;
+pc = mod(pc + 1,65536); %it probably does this
 end
 
