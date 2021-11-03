@@ -3,13 +3,13 @@ function [] = addc1(opcode)
 %   Oscillator period 12. ADDC (A,Rn), ADDC (A,@Ri). CY set if carry-out from
 %   bit 7, AC if carry-out from bit 3. OV if carry-out of bit 6 not 7, or 7
 %   not 6. The flags are overwritten from this instruction, with 0s if
-%   needed. No state is preserved from the previos ops.
+%   needed. No state is preserved from the previos ops. Opcodes 0x36-0x3F
 
 acc = uint8(dba(0xE0));
 cy = psw('cy');
 
 if (opcode < 0x36) || (opcode > 0x3F)
-    error('wrong opcode in add function')
+    error('wrong opcode in addc function')
 end
 
 if opcode > 0x37

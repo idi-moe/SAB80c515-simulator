@@ -3,7 +3,7 @@ function [] = add1(opcode)
 %   Oscillator period 12. Add (A,Rn), A(A,@Ri). CY set if carry-out from
 %   bit 7, AC if carry-out from bit 3. OV if carry-out of bit 6 not 7, or 7
 %   not 6. The flags are overwritten from this instruction, with 0s if
-%   needed. No state is preserved from the previos ops.
+%   needed. No state is preserved from the previos ops. Opcodes 0x26-0x2F
 
 acc = uint8(dba(0xE0));
 
