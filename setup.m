@@ -1,15 +1,17 @@
 %include subfolders
 addpath('instructions')
+addpath('micro-ops')
 
 %allocate memory
 global EAp internal external lowerintram upperintram sfr extdatamem pc
 EAp = false; %external rom flag, 80c535=0
-internal = zeros(0x2000,1);
-external = zeros(0x10000,1);
-lowerintram = zeros(0x80,1);
-upperintram = zeros(0x80,1);
-sfr = zeros(0x80,1);
-extdatamem = zeros(0x10000,1);
+%if they have this uint8 type I think it all works
+internal = uint8(zeros(0x2000,1));
+external = uint8(zeros(0x10000,1));
+lowerintram = uint8(zeros(0x80,1));
+upperintram = uint8(zeros(0x80,1));
+sfr = uint8(zeros(0x80,1));
+extdatamem = uint8(zeros(0x10000,1));
 pc = int16(zeros(1,1));
 
 %init sfr
