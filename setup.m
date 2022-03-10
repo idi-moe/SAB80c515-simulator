@@ -22,3 +22,5 @@ dba(0xA0,'w',0xFF); %P2
 dba(0xB0,'w',0xFF); %P3
 dba(0xE8,'w',0xFF); %P4
 dba(0xF8,'w',0xFF); %P5
+
+%import internal and external ROMs if needed here
