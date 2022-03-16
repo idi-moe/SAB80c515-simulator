@@ -12,7 +12,7 @@ lowerintram = uint8(zeros(0x80,1));
 upperintram = uint8(zeros(0x80,1));
 sfr = uint8(zeros(0x80,1));
 extdatamem = uint8(zeros(0x10000,1));
-pc = int16(zeros(1,1));
+pc = int16(zeros(1,1)); %fyi pc is not in memory
 
 %init sfr
 dba(0x80,'w',0xFF); %P0, port 0
@@ -24,3 +24,6 @@ dba(0xE8,'w',0xFF); %P4
 dba(0xF8,'w',0xFF); %P5
 
 %import internal and external ROMs if needed here
+
+%now call run() in order to start the simulator
+%run()
